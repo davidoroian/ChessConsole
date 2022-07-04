@@ -10,3 +10,4 @@ We need to implement:
 
 - a  buffer with all of the removed chess pieces so that they can be called back when a pawn reaches the end of the board
 - the rule for the end of the game (check/checkmate)
+- UPDATE the app for a visual inteface that we need to create
