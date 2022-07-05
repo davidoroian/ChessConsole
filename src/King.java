@@ -12,6 +12,9 @@ public class King extends ChessPiece {
             }
             default -> System.out.println("Unexpected value: " + color);
         }
+
+        int k;
+
     }
 
     @Override
