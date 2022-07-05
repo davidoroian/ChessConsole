@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     static Scanner in = new Scanner(System.in);
