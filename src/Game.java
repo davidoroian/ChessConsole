@@ -201,11 +201,11 @@ public class Game {
                 System.out.println("What piece do you want to put? Enter the id (1-6) ");
                 while (true) {
                     int newID = in.nextInt();
-                    if (takenPieces.get(newID) != 0) {
+                    if (takenPieces.get(newID) != 0 && Arrays.asList(1,2,3,4,5,6).contains(newID)) {
                         takenPieces.put(newID, takenPieces.get(newID) - 1);//subtract them from the map
                         return newID;
                     } else
-                        System.out.println("No piece is taken!");
+                        System.out.println("Piece isn't taken!");
                 }
             }
         }
@@ -221,7 +221,7 @@ public class Game {
                 System.out.println("What piece do you want to put? Enter the id (7-12) ");
                 while (true) {
                     int newID = in.nextInt();
-                    if (takenPieces.get(newID) != 0) {
+                    if (takenPieces.get(newID) != 0 && Arrays.asList(7,8,9,10,11,12).contains(newID)) {
                         takenPieces.put(newID, takenPieces.get(newID) - 1);
                         return newID;
                     } else
