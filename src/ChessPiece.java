@@ -2,6 +2,7 @@ public abstract class ChessPiece {
     private int x, y;
     String color;
     int id;
+    int takenID;
 
     public ChessPiece() {
     }
@@ -25,6 +26,10 @@ public abstract class ChessPiece {
         this.x = x;
     }
 
+    public int getTakenID(){return takenID;}
+
+    public void setTakenID(int takenID){this.takenID=takenID;}
+
     public int getY() {
         return y;
     }
@@ -42,6 +47,7 @@ public abstract class ChessPiece {
     public void move(int[][] board, int x, int y) {
         if (movePossible(board, x, y)) {
             if (board[x][y] == 0) {
+                this.takenID=-1;//no piece is taken
                 int temp = board[this.getX()][this.getY()];
                 board[this.getX()][this.getY()] = board[x][y];
                 board[x][y] = temp;
@@ -49,6 +55,7 @@ public abstract class ChessPiece {
                 switch (color) {
                     case "black" -> {
                         if (board[x][y] >= 7 && board[x][y] <= 12) {
+                            this.takenID=board[x][y];//get the ID of the piece taken
                             board[x][y] = board[this.getX()][this.getY()];
                             board[this.getX()][this.getY()] = 0;
                         } else {
@@ -57,6 +64,7 @@ public abstract class ChessPiece {
                     }
                     case "white" -> {
                         if (board[x][y] >= 1 && board[x][y] <= 6) {
+                            this.takenID=board[x][y];
                             board[x][y] = board[this.getX()][this.getY()];
                             board[this.getX()][this.getY()] = 0;
                         } else {
@@ -67,8 +75,10 @@ public abstract class ChessPiece {
                     default -> throw new IllegalStateException("Unexpected value: " + color);
                 }
             }
+
             this.setX(x);   //we update the coordinates of the piece
             this.setY(y);
+
         } else {
             System.out.println("\nMove was not possible!!\n");
         }
